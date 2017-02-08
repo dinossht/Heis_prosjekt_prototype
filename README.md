@@ -5,6 +5,4 @@
 
 Creately.com: use case diagram, klassediagram, kommunikasjonsdiagram
 
-sekvensdiagrammer:\n
--ferdig med diagram for stoppknapp + utvidelse\n
--ferdig med diagram for ankommer etasje
+sekvensdiagrammer ferdig: stopp + utvidelse, ankommer etasje
