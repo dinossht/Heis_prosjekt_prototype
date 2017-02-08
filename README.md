@@ -6,4 +6,5 @@
 Creately.com: use case diagram, klassediagram, kommunikasjonsdiagram
 
 sekvensdiagrammer:
-*ferdig med diagram for stoppknapp
+-ferdig med diagram for stoppknapp + utvidelse
+-ferdig med diagram for ankommer etasje
