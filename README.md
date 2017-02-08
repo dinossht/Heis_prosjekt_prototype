@@ -5,4 +5,4 @@
 
 Creately.com: use case diagram, klassediagram, kommunikasjonsdiagram
 
-sekvensdiagrammer ferdig: stopp + utvidelse, ankommer etasje
+sekvensdiagrammer ferdig: stopp + utvidelse,   ankommer etasje,  velg retning/bestill heis
