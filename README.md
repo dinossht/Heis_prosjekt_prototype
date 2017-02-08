@@ -4,3 +4,6 @@
 - ??.??.2017	Innlevering av 		
 
 Creately.com: use case diagram, klassediagram, kommunikasjonsdiagram
+
+sekvensdiagrammer:
+*ferdig med diagram for stoppknapp
