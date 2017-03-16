@@ -1,0 +1,133 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+typedef struct menuEntry_t menuEntry_t;
+typedef struct menuModule_t menuModule_t;
+typedef struct menuSystem_t menuSystem_t;
+
+#define MAX_NUM_OF_ENTRIES 5
+struct menuEntry_t {
+	int x;
+	const char* text;
+	bool active;
+	menuModule_t* linkMenuModule;
+};
+void menuEntry_init( menuEntry_t* menuEntry, int x, char* text, bool active) {
+	menuEntry->x = x;
+	menuEntry->text = text;
+	menuEntry->active = active;
+	menuEntry->linkMenuModule = NULL;
+}
+
+void menuEntry_linkEntryToMenu(menuEntry_t* menuEntry, menuModule_t* menuModule) {
+	menuEntry->linkMenuModule= menuModule;
+}
+
+void menuEntry_display( menuEntry_t* menuEntry ) {
+	printf("Label = %s, Num = %d\n", menuEntry->text, menuEntry->x);
+}
+
+struct menuModule_t {
+	int numOfElements;
+	bool active;
+	char* entryLabels[MAX_NUM_OF_ENTRIES];
+	menuEntry_t menuEntries[MAX_NUM_OF_ENTRIES];
+	menuEntry_t* linkMenuEntry;
+};
+
+void menuModule_init(menuModule_t* menuModule, int numOfElements, char* texts[MAX_NUM_OF_ENTRIES], bool active) {
+	//menuModule->entryLabels[MAX_NUM_OF_ENTRIES] = texts[MAX_NUM_OF_ENTRIES];
+	menuModule->active = active;
+	menuModule->numOfElements = numOfElements;
+	menuModule->linkMenuEntry = NULL;
+	for (int i = 0; i < menuModule->numOfElements; i++) {
+		menuModule->entryLabels[i] = texts[i];
+		menuEntry_init(&(menuModule->menuEntries[i]), 0 + i * 2, menuModule->entryLabels[i], false);
+	}
+}
+void menuModule_linkMenuToEntry(menuModule_t* menuModule, menuEntry_t* menuEntry) {
+	menuModule->linkMenuEntry = menuEntry;
+}
+void menuModule_linkEntriesToMenu(menuModule_t* menuModule, menuModule_t* menuModules[MAX_NUM_OF_ENTRIES]) {
+	for (int i = 0; i < menuModule->numOfElements; i++) {
+		menuEntry_linkEntryToMenu(&(menuModule->menuEntries[i]), menuModules[i]);
+	}
+}
+void menuModule_display(menuModule_t* menuModule) {
+	//print title of the module
+	for (int i = 0; i < menuModule->numOfElements; i++) {
+		menuEntry_display(&(menuModule->menuEntries[i]));
+	}
+}
+#define NUM_OF_MENUS 3
+struct menuSystem_t {
+	int numOfMenuModules;
+	int numOfEntries[10]; //size is numOfMenuModules 
+	char* entryLabels[NUM_OF_MENUS][MAX_NUM_OF_ENTRIES];
+	menuModule_t menuModules[NUM_OF_MENUS];
+};
+//void menuSystem_init(menuSystem_t* menuSystem, int numOfMenuModules, int numOfEntries, char* entryLabels ) {
+	
+//}
+
+int main(void) {
+	
+	//menuEntry_t menuEntry1;
+	//menuEntry_init(&menuEntry1, 33, "Extern", false);
+
+
+	//menuModule_t menuModule1;
+	//char* labels1[3] = { "Entry0", "Entry1", "Entry2" };
+	//char* labels2[3] = { "NewEntry0", "NewEntry1", "NewEntry2" };
+	menuModule_t menus[2];
+	char* labels[2][3] = { { "Entry0",		"Entry1",		"Entry2" },
+						   { "NewEntry0",	"NewEntry1"} };
+	int type[] = { 0, 1, 2 }; //type that says what kind of entry it is
+	int typeMenu; //this type says something about if the menu only consists of bitmaps...
+	int size[2] = { 3, 2 }; //size of each menusystem..........................!
+	//menuModule_init(menus, 3, labels1, false);
+	//menuModule_linkMenuToEntry(&menuModule1, &menuEntry1);
+	//menuModule_display(menus);
+	//menuEntry_display(menuModule1.linkMenuEntry);		//linking works !!
+	//menuModule_init(menus + 1, 3, labels2, false);
+	//menuModule_display(menus +1);
+
+	for (int i = 0; i < 3; i++){
+		menuModule_init(menus + i, size[i], labels[i], false);
+	}
+	for (int i = 0; i < 3; i++){
+		menuModule_display(menus + i);
+	}
+
+
+
+
+	 //This works !!!!! the code over
+
+	//menuEntry_display(&(menuModule1.menuEntries[0]));
+
+
+	/*
+	char* labels[3] = { "Entry0", "Entry1", "Entry2" };
+	menuModule_t menus[2];	
+	for (int i = 0; i < 1; i++) {
+		menuModule_init(menus, 33, labels, false);
+		menuModule_display(menus);
+	}
+	*/
+	
+
+
+	//menuModule_t SubMenu;
+	//menuModule_init(&Main,)
+
+
+
+	/*
+	*   menuEntries[x, y, z, null, null, null]
+	*/
+
+	system("pause");
+	return 1;
+}
+
