@@ -9,7 +9,7 @@ typedef int bool;
 
 static double start_time = 0;
 static double stop_time = 0;
-
+//git bash test
 void timer_start( void );
 bool timer_is_timed_out( int sec );	//Resets timer at the same time
 
